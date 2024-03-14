@@ -7,3 +7,4 @@
 - Thiago Mumare Fermoselles
 - Bhudhav Singh
 - Kevin Liu
+- Junyi Xia
