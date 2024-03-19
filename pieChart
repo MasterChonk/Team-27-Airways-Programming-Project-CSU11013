@@ -1,0 +1,54 @@
+class pieChart {
+  float posX; 
+  float posY;
+  float posDiam;
+  int[] posValues;
+  int[]posCols;
+  float total;
+  float lastAngle;
+ 
+  
+  
+  pieChart ( float posX, float posY, float posDiam, int[] posValues, int[]posCols ) {
+    
+    
+    this.posX = posX;
+    this.posY = posY;
+    this.posDiam = posDiam;
+    this.posValues = posValues;
+    this.posCols = posCols;
+    this.total = total;
+    this.lastAngle = lastAngle;
+    
+  
+  
+    noStroke();
+     float total = 0;
+    float lastAngle = -PI;
+    
+    for (int i = 0; i < posValues.length; i++) {
+      total += posValues[i];
+    }
+    
+  }
+
+ void setup() {
+  size(1500, 1000); 
+ }
+//void totalDistance {
+  
+  
+  
+//}
+    void draw() {
+    
+    for (int i = 0; i < posValues.length; i++) {
+      
+      fill(posCols[i]);
+      float angle = map(posValues[i], 0, total, 0, 2 * PI);
+      arc(posX, posY, posDiam, posDiam, lastAngle, lastAngle + angle, PIE);
+      lastAngle += angle;
+    }
+  }
+}
+ 
