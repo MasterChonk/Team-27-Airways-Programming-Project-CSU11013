@@ -1,1 +1,78 @@
+class PieChart
+{
+  ArrayList<Integer> angles;
+  int openedDone = 0;
+  int angle = 360;
+  boolean open = false;
+  boolean close = false;
+  boolean closed = false;
+  
+  PieChart (ArrayList<Integer> data)
+  {
+    angles = convertDataToAngles(data);
+  }
 
+
+  ArrayList<Integer> convertDataToAngles(ArrayList<Integer> data)
+  {
+    ArrayList<Integer> ang = new ArrayList<Integer>();
+    int total = 0;
+    for (int i=0; i < data.size(); i++)
+    {
+      total += data.get(i);
+    }
+    
+    for (int i=0; i < data.size(); i++)
+    {
+      ang.add(i, data.get(i)*360/total);
+    }
+    
+    int totalAng = 0;
+    for (int i=0; i < data.size(); i++)
+    {
+      totalAng += ang.get(i);
+    }
+    if (totalAng != 360)
+    {
+      ang.add(0, 360-totalAng);
+    }
+    return ang;
+  }
+
+  
+
+  void draw()
+  {
+    stroke(0);
+    
+    if (mousePressed)       // change condition for closing
+      close = true;
+    if (!closed)
+    {
+      float lastAngle = 0;
+      for (int i = 0; i < angles.size(); i++)
+      {
+        float grey = map(i, 0, angles.size(), 100, 255);
+        fill (200, grey, grey);
+        arc(width/2, height/2, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
+        lastAngle += radians(angles.get(i));
+      }
+      if (!open)
+      {
+        fill(0);
+        arc(width/2, height/2, RADIUS, RADIUS, 0, radians(angle));
+        angle = angle-10;
+        if (angle <=0)
+          open = true;
+      }
+      if (close)
+      {
+        fill(0);
+        arc(width/2, height/2, RADIUS, RADIUS, 0, radians(angle));
+        angle = angle+10;
+        if (angle >=360)
+          closed = true;
+      }
+    }
+  }
+}
