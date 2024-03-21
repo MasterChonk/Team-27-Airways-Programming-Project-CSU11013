@@ -1,21 +1,35 @@
 PImage img; // 用于存储地图图片
-float angleX = 0;
-float angleY = 0;
-float lastMouseX;
-float lastMouseY;
+float angleX, angleY; // 当前旋转角度
+float initialAngleX = PI/3; // 初始倾斜角度X，约10度
+float initialAngleY = 0; // 初始倾斜角度Y，约10度
+float lastMouseX, lastMouseY;
 boolean dragging = false;
+final float MAX_ANGLE = PI / 4; // 最大旋转角度，PI / 4等于45度
 
 void setup() {
   size(640, 360, P3D); // 设置窗口大小和使用3D渲染
   img = loadImage("usa.greyed.png"); // 加载你的美国地图图片
+  angleX = initialAngleX;
+  angleY = initialAngleY;
 }
 
 void draw() {
   background(255); // 设置背景色
   if (dragging) {
     // 更新旋转角度基于鼠标当前位置与上一个位置的差
-    angleY += (mouseX - lastMouseX) * 0.0005;
-    angleX += (mouseY - lastMouseY) * 0.001;
+    angleY += (mouseX - lastMouseX) * 0.005;
+    angleX += (mouseY - lastMouseY) * 0.005;
+    // 限制旋转角度在-45到45度之间
+    angleX = constrain(angleX, -MAX_ANGLE, MAX_ANGLE);
+    angleY = constrain(angleY, -MAX_ANGLE, MAX_ANGLE);
+  }  else {
+    // 当不拖动时，慢慢回到初始倾斜角度
+    if (angleX != initialAngleX) {
+      angleX += (initialAngleX - angleX) * 0.1;
+    }
+    if (angleY != initialAngleY) {
+      angleY += (initialAngleY - angleY) * 0.1;
+    }
   }
   
   
