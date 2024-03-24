@@ -1,22 +1,29 @@
 class PieChart
 {
-  ArrayList<Integer> angles;
+  final int ARC_X = width/2;
+  final int ARC_Y = height/2;
+  final int RADIUS = 300;
+  ArrayList<Float> angles;
+  ArrayList<String> places;
   int openedDone = 0;
   int angle = 360;
+  int total;
+  float tXpos, tYpos, tAngle;
   boolean open = false;
   boolean close = false;
   boolean closed = false;
   
-  PieChart (ArrayList<Integer> data)
+  
+  PieChart (ArrayList<Integer> data, ArrayList<String> places)
   {
     angles = convertDataToAngles(data);
+    this.places = places;
   }
 
 
-  ArrayList<Integer> convertDataToAngles(ArrayList<Integer> data)
+  ArrayList<Float> convertDataToAngles(ArrayList<Integer> data)
   {
-    ArrayList<Integer> ang = new ArrayList<Integer>();
-    int total = 0;
+    ArrayList<Float> ang = new ArrayList<Float>();
     for (int i=0; i < data.size(); i++)
     {
       total += data.get(i);
@@ -24,7 +31,7 @@ class PieChart
     
     for (int i=0; i < data.size(); i++)
     {
-      ang.add(i, data.get(i)*360/total);
+      ang.add(i, (float)Math.ceil(data.get(i)*3600/total)/10);
     }
     
     int totalAng = 0;
@@ -34,7 +41,7 @@ class PieChart
     }
     if (totalAng != 360)
     {
-      ang.add(0, 360-totalAng);
+      ang.set(0, ang.get(0)+360-totalAng);
     }
     return ang;
   }
@@ -50,25 +57,51 @@ class PieChart
     if (!closed)
     {
       float lastAngle = 0;
-      for (int i = 0; i < angles.size(); i++)
+      for (int i = 0; i < places.size(); i++)
       {
-        float grey = map(i, 0, angles.size(), 100, 255);
-        fill (200, grey, grey);
-        arc(width/2, height/2, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
+        float grey = map(i, 0, angles.size(), 0, 255);
+        fill (20+grey, 21+0.4*grey, 90-0.5*grey);
+        arc(ARC_X, ARC_Y, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
+        tAngle = lastAngle+(radians(angles.get(i))/2);
+        tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
+        tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
+        fill(220);
+        textSize(100/places.size()+2*RADIUS/100);
+        text(places.get(i), tXpos-5, tYpos+5);
+
+        if (angles.get(i) >= 10)
+        {
+          tXpos = ARC_X + RADIUS*cos(tAngle)/3;
+          tYpos = ARC_Y + RADIUS*sin(tAngle)/3;
+        }
+        else 
+        {
+          tXpos = ARC_X + RADIUS*cos(tAngle)/2.5;
+          tYpos = ARC_Y + RADIUS*sin(tAngle)/2.5;
+        }
+        if (angles.get(i)>5)
+        {
+          fill(220);
+          textSize(100/places.size()+RADIUS/100);
+          text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-8, tYpos+5);
+        }
         lastAngle += radians(angles.get(i));
       }
+      
+      text("Total flights:"+total, 10, 15);
+      
       if (!open)
       {
-        fill(0);
-        arc(width/2, height/2, RADIUS, RADIUS, 0, radians(angle));
+        fill(0);     // background color
+        arc(ARC_X, ARC_Y, 3*RADIUS, 3*RADIUS, 0, radians(angle));
         angle = angle-10;
         if (angle <=0)
           open = true;
       }
       if (close)
       {
-        fill(0);
-        arc(width/2, height/2, RADIUS, RADIUS, 0, radians(angle));
+        fill(0);    // background color
+        arc(ARC_X, ARC_Y, 3*RADIUS, 3*RADIUS, 0, radians(angle));
         angle = angle+10;
         if (angle >=360)
           closed = true;
