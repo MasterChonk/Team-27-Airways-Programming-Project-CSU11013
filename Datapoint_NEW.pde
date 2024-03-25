@@ -1,4 +1,3 @@
-// Written by Kush Voorakkara 19/03/2024
 // create class when data is needed/
 // pass in what data is needed
 // data is found and returned as an array
@@ -6,9 +5,9 @@
 class DataTable {
   Table data;
 
-  DataTable() {
+  DataTable(String fileName) {
     // loads data into table
-    this.data = loadTable("flights2k(1).csv", "header");
+    this.data = loadTable(fileName, "header");
   }
   
   // methods to search for specific data in a certain column in rows of data and 
@@ -24,34 +23,16 @@ class DataTable {
     }
     return dataArr;
   }
+  
+}
 
-  IntList findData(String chosenColumn, String dataPoint, int dataPointOut) {
-    IntList dataArr = new IntList();
-    for (TableRow row : data.rows()) {
-      if (row.getString(chosenColumn).equals(dataPoint)) {
-        dataArr.append(row.getInt(dataPointOut));
-      }
-    }
-    return dataArr;
-  }
+// method to get the frequency of unique occurances of an array of 
+// different values and return it as a hashmap of frequencies
 
-  StringList findData(String chosenColumn, int dataPoint, String dataPointOut) {
-    StringList dataArr = new StringList();
-    for (TableRow row : data.rows()) {
-      if (row.getInt(chosenColumn) == dataPoint) {
-        dataArr.append(row.getString(dataPointOut));
-      }
-    }
-    return dataArr;
+HashMap findFrequency(StringList data) {
+  HashMap<String, Integer> dataFrequency = new HashMap<String, Integer>();
+  for (String element : data) {
+    dataFrequency.put(element, dataFrequency.getOrDefault(element, 0) + 1);
   }
-
-  IntList findData(String chosenColumn, int dataPoint, int dataPointOut) {
-    IntList dataArr = new IntList();
-    for (TableRow row : data.rows()) {
-      if (row.getInt(chosenColumn) == dataPoint) {
-        dataArr.append(row.getInt(dataPointOut));
-      }
-    }
-    return dataArr;
-  }
+  return dataFrequency;
 }
