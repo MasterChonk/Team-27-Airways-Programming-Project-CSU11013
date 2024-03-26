@@ -16,9 +16,9 @@ class DataPoint {
   String depTime;
   String CRSArrTime;
   String arrTime;
-  int cancelled;
-  int diverted;
-  int dis;
+  float cancelled;
+  float diverted;
+  Float dis;
   
   
   DataPoint(String[] fields) {
@@ -33,14 +33,14 @@ class DataPoint {
     this.dest = fields[8];
     this.destCity = fields[9];
     this.destCityShort = fields[10]; 
-    this.destState = fields[11];
+    this.destState = fields[11];/////
     this.destWac = Integer.parseInt(fields[12]);
     this.CRSDepTime = fields[13];
     this.depTime = fields[14];
     this.CRSArrTime = fields[15];
     this.arrTime = fields[16];
-    this.cancelled = Integer.parseInt(fields[17]);
-    this.diverted = Integer.parseInt(fields[18]);
-    this.dis = Integer.parseInt(fields[19]);
+    this.cancelled = Float.parseFloat(fields[17]);
+    this.diverted = Float.parseFloat(fields[18]);
+    this.dis = Float.parseFloat(fields[19]);
   }
 }
