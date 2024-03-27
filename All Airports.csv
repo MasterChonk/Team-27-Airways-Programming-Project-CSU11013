@@ -1,0 +1,370 @@
+Code,State,State Name,City
+BHM,AL,Alabama,Birmingham
+DHN,AL,Alabama,Dothan
+HSV,AL,Alabama,Huntsville
+MOB,AL,Alabama,Mobile
+MGM,AL,Alabama,Montgomery
+ADK,AK,Alaska,Adak Island
+ANC,AK,Alaska,Anchorage
+BRW,AK,Alaska,Barrow
+BET,AK,Alaska,Bethel
+CDV,AK,Alaska,Cordova
+SCC,AK,Alaska,Deadhorse
+DLG,AK,Alaska,Dillingham
+FAI,AK,Alaska,Fairbanks
+JNU,AK,Alaska,Juneau
+KTN,AK,Alaska,Ketchikan
+AKN,AK,Alaska,King Salmon
+ADQ,AK,Alaska,Kodiak
+OTZ,AK,Alaska,Kotzebue
+OME,AK,Alaska,Nome
+PSG,AK,Alaska,Petersburg
+SIT,AK,Alaska,Sitka
+WRG,AK,Alaska,Wrangell
+YAK,AK,Alaska,Yakutat
+FLG,AZ,Arizona,Flagstaff
+PHX,AZ,Arizona,Phoenix
+AZA,AZ,Arizona,Phoenix
+PRC,AZ,Arizona,Prescott
+TUS,AZ,Arizona,Tucson
+YUM,AZ,Arizona,Yuma
+XNA,AR,Arkansas,Fayetteville
+FSM,AR,Arkansas,Fort Smith
+LIT,AR,Arkansas,Little Rock
+TXK,AR,Arkansas,Texarkana
+ACV,CA,California,Arcata
+BFL,CA,California,Bakersfield
+BIH,CA,California,Bishop
+BUR,CA,California,Burbank
+FAT,CA,California,Fresno
+LGB,CA,California,Long Beach
+LAX,CA,California,Los Angeles
+MRY,CA,California,Monterey
+OAK,CA,California,Oakland
+ONT,CA,California,Ontario
+PSP,CA,California,Palm Springs
+RDD,CA,California,Redding
+SMF,CA,California,Sacramento
+SAN,CA,California,San Diego
+SFO,CA,California,San Francisco
+SJC,CA,California,San Jose
+SBP,CA,California,San Luis Obispo
+SNA,CA,California,Santa Ana
+SBA,CA,California,Santa Barbara
+SMX,CA,California,Santa Maria
+STS,CA,California,Santa Rosa
+SCK,CA,California,Stockton
+ALS,CO,Colorado,Alamosa
+ASE,CO,Colorado,Aspen
+COS,CO,Colorado,Colorado Springs
+DEN,CO,Colorado,Denver
+DRO,CO,Colorado,Durango
+EGE,CO,Colorado,Eagle
+GJT,CO,Colorado,Grand Junction
+GUC,CO,Colorado,Gunnison
+HDN,CO,Colorado,Hayden
+MTJ,CO,Colorado,Montrose
+PUB,CO,Colorado,Pueblo
+BDL,CT,Connecticut,Hartford
+ILG,DE,Delaware,Wilmington
+DAB,FL,Florida,Daytona Beach
+FLL,FL,Florida,Fort Lauderdale
+RSW,FL,Florida,Fort Myers
+GNV,FL,Florida,Gainesville
+JAX,FL,Florida,Jacksonville
+EYW,FL,Florida,Key West
+MLB,FL,Florida,Melbourne
+MIA,FL,Florida,Miami
+MCO,FL,Florida,Orlando
+ECP,FL,Florida,Panama City
+PNS,FL,Florida,Pensacola
+PGD,FL,Florida,Punta Gorda
+SFB,FL,Florida,Sanford
+SRQ,FL,Florida,Sarasota
+PIE,FL,Florida,St. Petersburg
+TLH,FL,Florida,Tallahassee
+TPA,FL,Florida,Tampa
+VPS,FL,Florida,Valparaiso
+PBI,FL,Florida,West Palm Beach
+ABY,GA,Georgia,Albany
+ATL,GA,Georgia,Atlanta
+AGS,GA,Georgia,Augusta
+BQK,GA,Georgia,Brunswick
+CSG,GA,Georgia,Columbus
+SAV,GA,Georgia,Savannah
+VLD,GA,Georgia,Valdosta
+ITO,HI,Hawaii,Hilo
+HNL,HI,Hawaii,Honolulu
+OGG,HI,Hawaii,Kahului
+KOA,HI,Hawaii,Kona
+LIH,HI,Hawaii,Lihue
+BOI,ID,Idaho,Boise
+IDA,ID,Idaho,Idaho Falls
+LWS,ID,Idaho,Lewiston
+PIH,ID,Idaho,Pocatello
+SUN,ID,Idaho,Sun Valley
+TWF,ID,Idaho,Twin Falls
+BLV,IL,Illinois,Belleville
+BMI,IL,Illinois,Bloomington
+CMI,IL,Illinois,Champaign
+ORD,IL,Illinois,Chicago
+MDW,IL,Illinois,Chicago
+DEC,IL,Illinois,Decatur
+MLI,IL,Illinois,Moline
+PIA,IL,Illinois,Peoria
+RFD,IL,Illinois,Rockford
+SPI,IL,Illinois,Springfield
+EVV,IN,Indiana,Evansville
+FWA,IN,Indiana,Fort Wayne
+IND,IN,Indiana,Indianapolis
+SBN,IN,Indiana,South Bend
+CID,IA,Iowa,Cedar Rapids
+DSM,IA,Iowa,Des Moines
+DBQ,IA,Iowa,Dubuque
+FOD,IA,Iowa,Fort Dodge
+MCW,IA,Iowa,Mason City
+SUX,IA,Iowa,Sioux City
+ALO,IA,Iowa,Waterloo
+DDC,KS,Kansas,Dodge City
+GCK,KS,Kansas,Garden City
+HYS,KS,Kansas,Hays
+LBL,KS,Kansas,Liberal
+MHK,KS,Kansas,Manhattan
+SLN,KS,Kansas,Salina
+ICT,KS,Kansas,Wichita
+CVG,KY,Kentucky,Cincinnati
+LEX,KY,Kentucky,Lexington
+SDF,KY,Kentucky,Louisville
+OWB,KY,Kentucky,Owensboro
+PAH,KY,Kentucky,Paducah
+AEX,LA,Louisiana,Alexandria
+BTR,LA,Louisiana,Baton Rouge
+LFT,LA,Louisiana,Lafayette
+LCH,LA,Louisiana,Lake Charles
+MLU,LA,Louisiana,Monroe
+MSY,LA,Louisiana,New Orleans
+SHV,LA,Louisiana,Shreveport
+BGR,ME,Maine,Bangor
+PWM,ME,Maine,Portland
+PQI,ME,Maine,Presque Isle
+BWI,MD,Maryland,Baltimore
+HGR,MD,Maryland,Hagerstown
+SBY,MD,Maryland,Salisbury
+BOS,MA,Massachusetts,Boston
+ORH,MA,Massachusetts,Worcester
+APN,MI,Michigan,Alpena
+DTW,MI,Michigan,Detroit
+ESC,MI,Michigan,Escanaba
+FNT,MI,Michigan,Flint
+GRR,MI,Michigan,Grand Rapids
+CMX,MI,Michigan,Hancock
+IMT,MI,Michigan,Iron Mountain
+AZO,MI,Michigan,Kalamazoo
+LAN,MI,Michigan,Lansing
+MQT,MI,Michigan,Marquette
+MKG,MI,Michigan,Muskegon
+PLN,MI,Michigan,Pellston
+MBS,MI,Michigan,Saginaw
+CIU,MI,Michigan,Sault Ste. Marie
+TVC,MI,Michigan,Traverse City
+BJI,MN,Minnesota,Bemidji
+BRD,MN,Minnesota,Brainerd
+DLH,MN,Minnesota,Duluth
+HIB,MN,Minnesota,Hibbing
+INL,MN,Minnesota,International Falls
+MSP,MN,Minnesota,Minneapolis
+RST,MN,Minnesota,Rochester
+STC,MN,Minnesota,St. Cloud
+GTR,MS,Mississippi,Columbus
+GPT,MS,Mississippi,Gulfport
+PIB,MS,Mississippi,Hattiesburg
+JAN,MS,Mississippi,Jackson
+MEI,MS,Mississippi,Meridian
+CGI,MO,Missouri,Cape Girardeau
+COU,MO,Missouri,Columbia
+TBN,MO,Missouri,Fort Leonard Wood
+JLN,MO,Missouri,Joplin
+MCI,MO,Missouri,Kansas City
+SGF,MO,Missouri,Springfield
+STL,MO,Missouri,St. Louis
+BIL,MT,Montana,Billings
+BZN,MT,Montana,Bozeman
+BTM,MT,Montana,Butte
+GTF,MT,Montana,Great Falls
+HLN,MT,Montana,Helena
+FCA,MT,Montana,Kalispell
+MSO,MT,Montana,Missoula
+GRI,NE,Nebraska,Grand Island
+EAR,NE,Nebraska,Kearney
+LNK,NE,Nebraska,Lincoln
+LBF,NE,Nebraska,North Platte
+OMA,NE,Nebraska,Omaha
+BFF,NE,Nebraska,Scottsbluff
+EKO,NV,Nevada,Elko
+LAS,NV,Nevada,Las Vegas
+RNO,NV,Nevada,Reno
+MHT,NH,New Hampshire,Manchester
+PSM,NH,New Hampshire,Portsmouth
+ACY,NJ,New Jersey,Atlantic City
+EWR,NJ,New Jersey,Newark
+TTN,NJ,New Jersey,Trenton
+ABQ,NM,New Mexico,Albuquerque
+HOB,NM,New Mexico,Hobbs
+ROW,NM,New Mexico,Roswell
+SAF,NM,New Mexico,Santa Fe
+ALB,NY,New York,Albany
+BGM,NY,New York,Binghamton
+BUF,NY,New York,Buffalo
+ELM,NY,New York,Elmira
+ISP,NY,New York,Islip
+ITH,NY,New York,Ithaca
+JFK,NY,New York,New York
+LGA,NY,New York,New York
+SWF,NY,New York,Newburgh
+IAG,NY,New York,Niagara Falls
+OGS,NY,New York,Ogdensburg
+PBG,NY,New York,Plattsburgh
+ROC,NY,New York,Rochester
+SYR,NY,New York,Syracuse
+ART,NY,New York,Watertown
+HPN,NY,New York,White Plains
+AVL,NC,North Carolina,Asheville
+CLT,NC,North Carolina,Charlotte
+USA,NC,North Carolina,Concord
+FAY,NC,North Carolina,Fayetteville
+GSO,NC,North Carolina,Greensboro
+PGV,NC,North Carolina,Greenville
+OAJ,NC,North Carolina,Jacksonville
+EWN,NC,North Carolina,New Bern
+RDU,NC,North Carolina,Raleigh
+ILM,NC,North Carolina,Wilmington
+BIS,ND,North Dakota,Bismarck
+DVL,ND,North Dakota,Devils Lake
+DIK,ND,North Dakota,Dickinson
+FAR,ND,North Dakota,Fargo
+GFK,ND,North Dakota,Grand Forks
+JMS,ND,North Dakota,Jamestown
+MOT,ND,North Dakota,Minot
+XWA,ND,North Dakota,Williston
+CAK,OH,Ohio,Akron
+CLE,OH,Ohio,Cleveland
+CMH,OH,Ohio,Columbus
+LCK,OH,Ohio,Columbus
+DAY,OH,Ohio,Dayton
+TOL,OH,Ohio,Toledo
+LAW,OK,Oklahoma,Lawton
+OKC,OK,Oklahoma,Oklahoma City
+SWO,OK,Oklahoma,Stillwater
+TUL,OK,Oklahoma,Tulsa
+RDM,OR,Oregon,Bend
+EUG,OR,Oregon,Eugene
+MFR,OR,Oregon,Medford
+OTH,OR,Oregon,North Bend
+PDX,OR,Oregon,Portland
+ABE,PA,Pennsylvania,Allentown
+ERI,PA,Pennsylvania,Erie
+MDT,PA,Pennsylvania,Harrisburg
+JST,PA,Pennsylvania,Johnstown
+LBE,PA,Pennsylvania,Latrobe
+PHL,PA,Pennsylvania,Philadelphia
+PIT,PA,Pennsylvania,Pittsburgh
+AVP,PA,Pennsylvania,Scranton
+SCE,PA,Pennsylvania,State College
+BQN,PR,Puerto Rico,Aguadilla
+PSE,PR,Puerto Rico,Ponce
+SJU,PR,Puerto Rico,San Juan
+PVD,RI,Rhode Island,Providence
+CHS,SC,South Carolina,Charleston
+CAE,SC,South Carolina,Columbia
+FLO,SC,South Carolina,Florence
+GSP,SC,South Carolina,Greer
+HHH,SC,South Carolina,Hilton Head
+MYR,SC,South Carolina,Myrtle Beach
+ABR,SD,South Dakota,Aberdeen
+PIR,SD,South Dakota,Pierre
+RAP,SD,South Dakota,Rapid City
+FSD,SD,South Dakota,Sioux Falls
+ATY,SD,South Dakota,Watertown
+TRI,TN,Tennessee,Bristol
+CHA,TN,Tennessee,Chattanooga
+TYS,TN,Tennessee,Knoxville
+MEM,TN,Tennessee,Memphis
+BNA,TN,Tennessee,Nashville
+ABI,TX,Texas,Abilene
+AMA,TX,Texas,Amarillo
+AUS,TX,Texas,Austin
+BPT,TX,Texas,Beaumont
+BRO,TX,Texas,Brownsville
+CLL,TX,Texas,College Station
+CRP,TX,Texas,Corpus Christi
+DFW,TX,Texas,Dallas
+DAL,TX,Texas,Dallas
+DRT,TX,Texas,Del Rio
+ELP,TX,Texas,El Paso
+HRL,TX,Texas,Harlingen
+IAH,TX,Texas,Houston
+HOU,TX,Texas,Houston
+GRK,TX,Texas,Killeen
+LRD,TX,Texas,Laredo
+GGG,TX,Texas,Longview
+LBB,TX,Texas,Lubbock
+MAF,TX,Texas,Midland
+MFE,TX,Texas,Mission
+SJT,TX,Texas,San Angelo
+SAT,TX,Texas,San Antonio
+TYR,TX,Texas,Tyler
+VCT,TX,Texas,Victoria
+ACT,TX,Texas,Waco
+SPS,TX,Texas,Wichita Falls
+GUM,TT,Trust Territories,Guam
+PPG,TT,Trust Territories,Pago Pago
+SPN,TT,Trust Territories,Saipan
+CDC,UT,Utah,Cedar City
+CNY,UT,Utah,Moab
+OGD,UT,Utah,Ogden
+PVU,UT,Utah,Provo
+SLC,UT,Utah,Salt Lake City
+SGU,UT,Utah,St. George
+VEL,UT,Utah,Vernal
+BTV,VT,Vermont,Burlington
+STT,VI,Virgin Islands,Charlotte Amalie
+STX,VI,Virgin Islands,Christiansted
+CHO,VA,Virginia,Charlottesville
+LYH,VA,Virginia,Lynchburg
+PHF,VA,Virginia,Newport News
+ORF,VA,Virginia,Norfolk
+RIC,VA,Virginia,Richmond
+ROA,VA,Virginia,Roanoke
+SHD,VA,Virginia,Staunton
+DCA,VA,Virginia,"Washington, D.C."
+IAD,VA,Virginia,"Washington, D.C."
+BLI,WA,Washington,Bellingham
+PAE,WA,Washington,Everett
+PSC,WA,Washington,Pasco
+PUW,WA,Washington,Pullman
+SEA,WA,Washington,Seattle
+GEG,WA,Washington,Spokane
+ALW,WA,Washington,Walla Walla
+EAT,WA,Washington,Wenatchee
+YKM,WA,Washington,Yakima
+HTS,WV,West Virginia,Ashland
+CRW,WV,West Virginia,Charleston
+CKB,WV,West Virginia,Clarksburg
+LWB,WV,West Virginia,Lewisburg
+ATW,WI,Wisconsin,Appleton
+EAU,WI,Wisconsin,Eau Claire
+GRB,WI,Wisconsin,Green Bay
+LSE,WI,Wisconsin,La Crosse
+MSN,WI,Wisconsin,Madison
+MKE,WI,Wisconsin,Milwaukee
+CWA,WI,Wisconsin,Mosinee
+RHI,WI,Wisconsin,Rhinelander
+CPR,WY,Wyoming,Casper
+CYS,WY,Wyoming,Cheyenne
+COD,WY,Wyoming,Cody
+GCC,WY,Wyoming,Gillette
+JAC,WY,Wyoming,Jackson
+LAR,WY,Wyoming,Laramie
+RIW,WY,Wyoming,Riverton
+RKS,WY,Wyoming,Rock Springs
+SHR,WY,Wyoming,Sheridan
