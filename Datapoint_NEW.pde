@@ -14,10 +14,10 @@ class DataTable {
   // return other data from rows that contain said data in the correct column
   // function overloading used as data contains strings and integers as data
 
-  StringList findData(String chosenColumn, String dataPoint, String dataPointOut) {
+  StringList findData(int startDate, int endDate, String chosenColumn, String dataPoint, String dataPointOut) {
     StringList dataArr = new StringList();
     for (TableRow row : data.rows()) {
-      if (row.getString(chosenColumn).equals(dataPoint)) {
+      if (row.getString(chosenColumn).equals(dataPoint) && (Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) >= startDate && Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) <= endDate)) {
         dataArr.append(row.getString(dataPointOut));
       }
     }
