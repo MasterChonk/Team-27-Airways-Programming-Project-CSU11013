@@ -4,7 +4,7 @@ class PieChart
 {
   final int ARC_X = width/2;
   final int ARC_Y = height/2;
-  final int RADIUS = 100;
+  final int RADIUS = 500;
   ArrayList<Integer> data;
   ArrayList<Float> angles;
   ArrayList<String> places;
@@ -20,129 +20,114 @@ class PieChart
 
   PieChart (ArrayList<Integer> data, ArrayList<String> places, String airport)
   {
-    angles = convertDataToAngles(data);
     this.data = data;
-    this.places = places;
+    for (int i=0; i < data.size(); i++)
+    {
+      total += data.get(i);
+    }
+    println(data.size());
+    
+    this.places = places; 
+    println(places.size());
+    angles = convertDataToAngles(data);
+    this.places.add("Others");
+    println(angles.size());
+    println(places.size());
+
+
     this.airport = airport;
   }
 
 
   ArrayList<Float> convertDataToAngles(ArrayList<Integer> data)
   {
-
+    float others = 0;
     ArrayList<Float> ang = new ArrayList<Float>();
+    ArrayList<Integer> rem = new ArrayList<Integer>();
+
+    
     for (int i=0; i < data.size(); i++)
     {
-      total += data.get(i);
+      float a = (float)Math.ceil(data.get(i)*3600/total)/10;
+      if (a <= 7)
+      {
+        rem.add(i);
+        others += a;
+      }
+      else
+        ang.add(a);
     }
-    for (int i=0; i < data.size(); i++)
+    println(ang.size());
+    println(rem.size());
+    println(others);
+    for (int i=rem.size()-1; i >= 0; i--)
     {
-      ang.add((float)Math.ceil(data.get(i)*3600/total)/10);
+      places.remove((int)rem.get(i));
     }
     int totalAng = 0;
+    ang.add(others);
     for (int i=0; i < ang.size(); i++)
     {
-      totalAng += ang.get(i);
+      totalAng += ang.get(i); 
     }
-    if (totalAng != 360)
-    {
-      ang.set(ang.size()-1, ang.get(ang.size()-1)+360-totalAng);
-    }
+    ang.set(ang.size()-1, (float)(ang.get(ang.size()-1)+360-totalAng));
     return ang;
   }
 
   void draw()
   {
-    stroke(0);
 
     if (!closed)
     {
       float lastAngle = 0;
-      int column = 0;
-      int j = 0;
       for (int i = 0; i < angles.size(); i++)
       {
-        if (angles.get(i) <= 7)
-          stroke(255);
-        else noStroke();
-        float grey = map(i, 0, angles.size(), 0, 255);
-        fill (20+grey, 21+0.4*grey, 90-0.5*grey);
-        arc(ARC_X, ARC_Y, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
-        if (angles.get(i) > 7)
+        if (i < angles.size()-1)
         {
-          tAngle = lastAngle+(radians(angles.get(i))/2);
-
-          fill(BLACK);
-          tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
-          tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
-          textSize(100/angles.size()+2*RADIUS/90);
-          text(places.get(i), tXpos-5, tYpos+5);
-
-          fill(WHITE);
-          tXpos = ARC_X + RADIUS*cos(tAngle)/3;
-          tYpos = ARC_Y + RADIUS*sin(tAngle)/3;
-          textSize(100/places.size()+RADIUS/50);
-          text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-11, tYpos+3);
-        } else
-        {
-          switch (column)
-          {
-          case 0:
-            tXpos = ARC_X + RADIUS*0.8;
-            tYpos = ARC_Y - RADIUS/2 +j*30;
-            break;
-          case 1:
-            tXpos = ARC_X + RADIUS*0.8 + 120;
-            tYpos = ARC_Y - RADIUS/2 + j*30;
-            break;
-          case 2:
-            tXpos = ARC_X + RADIUS*0.8 + 240;
-            tYpos = ARC_Y - RADIUS/2 + j*30;
-            break;
-          case 3:
-            tXpos = ARC_X + RADIUS*0.8 + 360;
-            tYpos = ARC_Y - RADIUS/2 + j*30;
-            break;
-          default:
-            tXpos = ARC_X + RADIUS*0.8;
-            tYpos = ARC_Y - RADIUS/2 +j*30;
-            j++;
-          }
-          j++;
-
-          if (tYpos > ARC_Y +RADIUS*0.4)
-          {
-            column ++;
-            j = 0;
-          }
-          rect(tXpos, tYpos, 30, 20);
-          textSize(15);
-          fill(BLACK);
-          text(places.get(i)+" - "+Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos+35, tYpos+15);
+          float grey = map(i, 0, angles.size(), 0, 255);
+          fill (20+grey, 21+0.4*grey, 90-0.5*grey);
         }
+        else
+          fill (60);
+        arc(ARC_X, ARC_Y, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
+
+        tAngle = lastAngle+(radians(angles.get(i))/2);
+        fill(BLACK);
+        tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
+        tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
+        textSize(100/angles.size()+2*RADIUS/90);
+        text(places.get(i), tXpos-5, tYpos+5);
+
+        fill(WHITE);
+        tXpos = ARC_X + RADIUS*cos(tAngle)/2.5;
+        tYpos = ARC_Y + RADIUS*sin(tAngle)/2.5;
+        textSize(100/places.size()+RADIUS/60);
+        text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-18, tYpos+3);
         lastAngle += radians(angles.get(i));
       }
-      textSize(20);
-      textAlign(LEFT, CENTER);
-      text("Airport: " + airport, 100, SCREENY/2);
-      text("Total flights:"+total, 100, SCREENY/2 + 25);
-      noStroke();
-      if (!open)
-      {
-        fill(WHITE);     // background color
-        arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
-        angle = angle-10;
-        if (angle <=0)
-          open = true;
-      }
-      //if (close)
-      //{
-      //  fill(BLACK);    // background color
-      //  arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
-      //  angle = angle+10;
-      //  if (angle >=360)
-      //    closed = true;
-      //}
     }
+    fill(BLACK);
+    textSize(20);
+    text("Airport: " + airport, 100, SCREENY/2);
+    text("Total flights: "+total, 100, SCREENY/2 + 25);
+    noStroke();
+    if (!open)
+    {
+      fill(WHITE);     // background color
+      arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
+      angle = angle-10;
+      if (angle <=0)
+        open = true;
+    }
+    
+    
+    //if (close)
+    //{
+    //  fill(BLACK);    // background color
+    //  arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
+    //  angle = angle+10;
+    //  if (angle >=360)
+    //    closed = true;
+    //}
   }
 }
