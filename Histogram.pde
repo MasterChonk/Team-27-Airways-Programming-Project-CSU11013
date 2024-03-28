@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+PImage[] optionImages = new PImage[5]; 
+PImage homepageImage; 
 Table table;
 HashMap<String, Integer> cityCountMap = new HashMap<String, Integer>();
 String[] cities;
@@ -10,8 +12,14 @@ int[] flights;
 int hoverIndex = -1;
 
 void setup() {
-  size(2000, 1400); 
+  size(1800, 1300); 
   background(255);
+   // change later for homepage and options button
+  homepageImage = loadImage("homepage.png");
+
+  for (int i = 0; i < 5; i++) {
+    optionImages[i] = loadImage("option" + (i+1) + ".jpg");
+  }
 
   table = loadTable("flights2k(1).csv","header");
   println("total " + table.getRowCount() + " rows");
@@ -44,8 +52,9 @@ void setup() {
 
 void draw() {
   background(255);
-  
-  float topMargin = 200;
+  image(homepageImage, 0, 0, 150, 100); 
+
+  float topMargin = 300;
   float bottomMargin = 50;
   float leftMargin = 80; 
   float rightMargin = 50;
@@ -56,7 +65,7 @@ void draw() {
   textSize(30);
   textAlign(CENTER, CENTER);
   fill(0);
-  text("Number of Flights on 01/01/2022", width/2, topMargin/2);
+  text("Number of Flights on 01/01/2022", width/2, topMargin - 50);
   
   // x-axis
   stroke(0);
@@ -66,7 +75,7 @@ void draw() {
   
   // x label
   textAlign(CENTER, CENTER);
-  text("City", width / 2, height - bottomMargin / 2);
+  text("City", 30, height - bottomMargin / 2);
   // y label
   pushMatrix();
   translate(leftMargin / 2, height / 2);
@@ -114,12 +123,20 @@ void draw() {
     text(flights[i], x + barWidth / 2, y - 5);
   }
   
-  // small box on top right
+  // Draw option images in a line at the top right corner
+  float optionImageSize = 50;
+  float optionImagesX = width - 5 * optionImageSize;
+  float optionImagesY = 10;
+  for (int i = 0; i < 5; i++) {
+    image(optionImages[i], optionImagesX + i * optionImageSize, optionImagesY, optionImageSize, optionImageSize);
+  }
+
+  // small box beside the right side of the homepage picture
   if (hoverIndex != -1) {
     float tooltipWidth = 300; 
     float tooltipHeight = 100; 
-    float tooltipX = width - tooltipWidth - 10; 
-    float tooltipY = 10; 
+    float tooltipX = 170; 
+    float tooltipY = 0; 
     fill(255); 
     rect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
     fill(0); 
@@ -131,7 +148,7 @@ void draw() {
     text("Average Flights per Day: " + nf(averageFlights, 0, 2), tooltipX + 10, tooltipY + 60);
   }
 }
-// count average, need to change
+
 float calculateAverageFlights(String city, HashMap<String, Integer> cityCountMap) {
   int totalFlights = cityCountMap.get(city);
   return totalFlights / 31.0; 
