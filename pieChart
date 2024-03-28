@@ -123,6 +123,7 @@ class PieChart
         lastAngle += radians(angles.get(i));
       }
       textSize(20);
+      textAlign(LEFT, CENTER);
       text("Airport: " + airport, 100, SCREENY/2);
       text("Total flights:"+total, 100, SCREENY/2 + 25);
       noStroke();
