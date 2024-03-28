@@ -13,7 +13,7 @@ int dateEnd = 31;
 int hoverIndex = -1;
 
 void setup() {
-  size(1800, 1300); 
+  size(1500, 1000); 
   background(255);
 
   table = loadTable("flights2k(1).csv","header");
