@@ -7,9 +7,10 @@ HashMap<String, Integer> cityCountMap = new HashMap<String, Integer>();
 HashMap<String, Integer> cityDistanceMap = new HashMap<String, Integer>();
 ArrayList<String> cities = new ArrayList<String>();
 ArrayList<Integer> distances = new ArrayList<Integer>();
+int hoverIndex = -1;
 
 void setup() {
-  size(1000, 800); // Increase canvas size
+  size(1500, 1300); // Increase canvas size
   table = loadTable("flights2k(1).csv", "header");
   println("total " + table.getRowCount() + " rows");
 
@@ -42,23 +43,26 @@ void setup() {
     cities.add(city);
     distances.add(distance);
   }
+}
 
-  // Find maximum distance
-  int maxDistance = Integer.MIN_VALUE;
-  for (Integer distance : distances) {
-    if (distance > maxDistance) {
-      maxDistance = distance;
-    }
-  }
+void draw() {
+  background(255);
 
   // Draw histogram with margins
-  background(255);
   stroke(0);
   fill(150);
   int margin = 50; // Set margin size
   int graphWidth = width - 2 * margin;
   int graphHeight = height - 2 * margin;
   int barWidth = graphWidth / cities.size();
+  int maxDistance = Integer.MIN_VALUE;
+  for (Integer distance : distances) {
+    if (distance > maxDistance) {
+        maxDistance = distance;
+    }
+}
+
+  
   for (int i = 0; i < cities.size(); i++) {
     int x = margin + i * barWidth;
     int y = margin + graphHeight - (int)map(distances.get(i), 0, maxDistance, 0, graphHeight);
@@ -66,5 +70,30 @@ void setup() {
     textAlign(CENTER, CENTER);
     fill(0);
     text(cities.get(i), x + barWidth / 2, height - 10);
+  }
+  
+  // Check if mouse is hovering over any bar
+  hoverIndex = -1; // Reset hover index
+  for (int i = 0; i < cities.size(); i++) {
+    int x = margin + i * barWidth;
+    int y = margin + graphHeight - (int)map(distances.get(i), 0, maxDistance, 0, graphHeight);
+    if (mouseX >= x && mouseX <= x + barWidth && mouseY >= y && mouseY <= height - margin) {
+      hoverIndex = i;
+      break; // Stop looping once a bar is hovered over
+    }
+  }
+
+  // Display tooltip if a bar is hovered over
+  if (hoverIndex != -1) {
+    int tooltipWidth = 400; 
+    int tooltipHeight = 200; 
+    int tooltipX = width - tooltipWidth - 20; // Adjust to place at top right corner with some margin
+    int tooltipY = 20;
+    fill(255);
+    rect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text("Distance: " + distances.get(hoverIndex), tooltipX + tooltipWidth / 2, tooltipY + tooltipHeight / 2);
   }
 }
