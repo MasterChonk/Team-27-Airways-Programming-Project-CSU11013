@@ -1,111 +1,147 @@
+import java.util.Arrays;
+import java.util.ArrayList;
 class PieChart
 {
   final int ARC_X = width/2;
   final int ARC_Y = height/2;
-  final int RADIUS = 300;
+  final int RADIUS = 100;
+  ArrayList<Integer> data;
   ArrayList<Float> angles;
   ArrayList<String> places;
+  String airport;
   int openedDone = 0;
   int angle = 360;
   int total;
   float tXpos, tYpos, tAngle;
   boolean open = false;
-  boolean close = false;
+  //boolean close = false;
   boolean closed = false;
-  
-  
-  PieChart (ArrayList<Integer> data, ArrayList<String> places)
+
+
+  PieChart (ArrayList<Integer> data, ArrayList<String> places, String airport)
   {
     angles = convertDataToAngles(data);
+    this.data = data;
     this.places = places;
+    this.airport = airport;
   }
 
 
   ArrayList<Float> convertDataToAngles(ArrayList<Integer> data)
   {
+
     ArrayList<Float> ang = new ArrayList<Float>();
     for (int i=0; i < data.size(); i++)
     {
       total += data.get(i);
     }
-    
     for (int i=0; i < data.size(); i++)
     {
-      ang.add(i, (float)Math.ceil(data.get(i)*3600/total)/10);
+      ang.add((float)Math.ceil(data.get(i)*3600/total)/10);
     }
-    
     int totalAng = 0;
-    for (int i=0; i < data.size(); i++)
+    for (int i=0; i < ang.size(); i++)
     {
       totalAng += ang.get(i);
     }
     if (totalAng != 360)
     {
-      ang.set(0, ang.get(0)+360-totalAng);
+      ang.set(ang.size()-1, ang.get(ang.size()-1)+360-totalAng);
     }
     return ang;
   }
 
-  
-
   void draw()
   {
     stroke(0);
-    
-    if (mousePressed)       // change condition for closing
-      close = true;
+
     if (!closed)
     {
       float lastAngle = 0;
-      for (int i = 0; i < places.size(); i++)
+      int column = 0;
+      int j = 0;
+      for (int i = 0; i < angles.size(); i++)
       {
+        if (angles.get(i) <= 7)
+          stroke(255);
+        else noStroke();
         float grey = map(i, 0, angles.size(), 0, 255);
         fill (20+grey, 21+0.4*grey, 90-0.5*grey);
         arc(ARC_X, ARC_Y, RADIUS, RADIUS, lastAngle, lastAngle+radians(angles.get(i)));
-        tAngle = lastAngle+(radians(angles.get(i))/2);
-        tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
-        tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
-        fill(220);
-        textSize(100/places.size()+2*RADIUS/100);
-        text(places.get(i), tXpos-5, tYpos+5);
-
-        if (angles.get(i) >= 10)
+        if (angles.get(i) > 7)
         {
+          tAngle = lastAngle+(radians(angles.get(i))/2);
+
+          fill(BLACK);
+          tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
+          tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
+          textSize(100/angles.size()+2*RADIUS/90);
+          text(places.get(i), tXpos-5, tYpos+5);
+
+          fill(WHITE);
           tXpos = ARC_X + RADIUS*cos(tAngle)/3;
           tYpos = ARC_Y + RADIUS*sin(tAngle)/3;
-        }
-        else 
+          textSize(100/places.size()+RADIUS/50);
+          text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-11, tYpos+3);
+        } else
         {
-          tXpos = ARC_X + RADIUS*cos(tAngle)/2.5;
-          tYpos = ARC_Y + RADIUS*sin(tAngle)/2.5;
-        }
-        if (angles.get(i)>5)
-        {
-          fill(220);
-          textSize(100/places.size()+RADIUS/100);
-          text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-8, tYpos+5);
+          switch (column)
+          {
+          case 0:
+            tXpos = ARC_X + RADIUS*0.8;
+            tYpos = ARC_Y - RADIUS/2 +j*30;
+            break;
+          case 1:
+            tXpos = ARC_X + RADIUS*0.8 + 120;
+            tYpos = ARC_Y - RADIUS/2 + j*30;
+            break;
+          case 2:
+            tXpos = ARC_X + RADIUS*0.8 + 240;
+            tYpos = ARC_Y - RADIUS/2 + j*30;
+            break;
+          case 3:
+            tXpos = ARC_X + RADIUS*0.8 + 360;
+            tYpos = ARC_Y - RADIUS/2 + j*30;
+            break;
+          default:
+            tXpos = ARC_X + RADIUS*0.8;
+            tYpos = ARC_Y - RADIUS/2 +j*30;
+            j++;
+          }
+          j++;
+
+          if (tYpos > ARC_Y +RADIUS*0.4)
+          {
+            column ++;
+            j = 0;
+          }
+          rect(tXpos, tYpos, 30, 20);
+          textSize(15);
+          fill(BLACK);
+          text(places.get(i)+" - "+Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos+35, tYpos+15);
         }
         lastAngle += radians(angles.get(i));
       }
-      
-      text("Total flights:"+total, 10, 15);
-      
+      textSize(20);
+      text("Airport: " + airport, 100, SCREENY/2);
+      text("Total flights:"+total, 100, SCREENY/2 + 25);
+      noStroke();
       if (!open)
       {
-        fill(0);     // background color
-        arc(ARC_X, ARC_Y, 3*RADIUS, 3*RADIUS, 0, radians(angle));
+        fill(WHITE);     // background color
+        arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
         angle = angle-10;
         if (angle <=0)
           open = true;
       }
-      if (close)
-      {
-        fill(0);    // background color
-        arc(ARC_X, ARC_Y, 3*RADIUS, 3*RADIUS, 0, radians(angle));
-        angle = angle+10;
-        if (angle >=360)
-          closed = true;
-      }
+      //if (close)
+      //{
+      //  fill(BLACK);    // background color
+      //  arc(ARC_X, ARC_Y, RADIUS+100, RADIUS+100, 0, radians(angle));
+      //  angle = angle+10;
+      //  if (angle >=360)
+      //    closed = true;
+      //}
     }
   }
 }
