@@ -17,11 +17,25 @@ class DataTable {
   StringList findData(int startDate, int endDate, String chosenColumn, String dataPoint, String dataPointOut) {
     StringList dataArr = new StringList();
     for (TableRow row : data.rows()) {
-      if (row.getString(chosenColumn).equals(dataPoint) && (Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) >= startDate && Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) <= endDate)) {
+      if (row.getString(chosenColumn).equals(dataPoint) && withinDateRange(row, startDate, endDate)) {
         dataArr.append(row.getString(dataPointOut));
       }
     }
     return dataArr;
+  }
+
+  boolean withinDateRange(TableRow row, int startDate, int endDate) {
+    boolean dateLessThanTen = row.getString("FL_DATE").substring(3, 4).equalsIgnoreCase("/");
+    if (dateLessThanTen) {
+      if (Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) >= startDate && Integer.parseInt(row.getString("FL_DATE").substring(2, 3)) <= endDate) {
+        return true;
+      }
+    } else {
+      if (Integer.parseInt(row.getString("FL_DATE").substring(2, 4)) >= startDate && Integer.parseInt(row.getString("FL_DATE").substring(2, 4)) <= endDate) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
