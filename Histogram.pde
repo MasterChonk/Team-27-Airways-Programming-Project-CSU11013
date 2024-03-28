@@ -1,25 +1,20 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-PImage[] optionImages = new PImage[5]; 
+ 
 PImage homepageImage; 
 Table table;
 HashMap<String, Integer> cityCountMap = new HashMap<String, Integer>();
 String[] cities;
 int[] flights;
-
+String airport = "NY";
+int dateStart = 01;
+int dateEnd = 31;
 int hoverIndex = -1;
 
 void setup() {
   size(1800, 1300); 
   background(255);
-   // change later for homepage and options button
-  homepageImage = loadImage("homepage.png");
-
-  for (int i = 0; i < 5; i++) {
-    optionImages[i] = loadImage("option" + (i+1) + ".jpg");
-  }
 
   table = loadTable("flights2k(1).csv","header");
   println("total " + table.getRowCount() + " rows");
@@ -52,8 +47,6 @@ void setup() {
 
 void draw() {
   background(255);
-  image(homepageImage, 0, 0, 150, 100); 
-
   float topMargin = 300;
   float bottomMargin = 50;
   float leftMargin = 80; 
@@ -65,7 +58,7 @@ void draw() {
   textSize(30);
   textAlign(CENTER, CENTER);
   fill(0);
-  text("Number of Flights on 01/01/2022", width/2, topMargin - 50);
+  text("Number of Flights to " + airport + " from 01/" + dateStart + "/2022 - 01/" + dateEnd + "/2022" , width/2, topMargin - 50);
   
   // x-axis
   stroke(0);
@@ -115,27 +108,19 @@ void draw() {
 
     // Draw state names
     textAlign(CENTER, TOP);
-    textSize(12);
+    textSize(20);
     text(cities[i], x + barWidth / 2, height - 20);
 
     // Draw flight numbers
     textAlign(CENTER, BOTTOM);
     text(flights[i], x + barWidth / 2, y - 5);
   }
-  
-  // Draw option images in a line at the top right corner
-  float optionImageSize = 50;
-  float optionImagesX = width - 5 * optionImageSize;
-  float optionImagesY = 10;
-  for (int i = 0; i < 5; i++) {
-    image(optionImages[i], optionImagesX + i * optionImageSize, optionImagesY, optionImageSize, optionImageSize);
-  }
 
   // small box beside the right side of the homepage picture
   if (hoverIndex != -1) {
     float tooltipWidth = 300; 
     float tooltipHeight = 100; 
-    float tooltipX = 170; 
+    float tooltipX = 200; 
     float tooltipY = 0; 
     fill(255); 
     rect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
