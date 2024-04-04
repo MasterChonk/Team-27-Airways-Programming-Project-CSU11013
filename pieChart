@@ -79,6 +79,9 @@ class PieChart
 
     if (!closed)
     {
+      fill(BLACK);
+      textSize(30);
+      text( "Number of flights to/from chosen airport", SCREENX/3, 50);
       float lastAngle = 0;
       for (int i = 0; i < angles.size(); i++)
       {
