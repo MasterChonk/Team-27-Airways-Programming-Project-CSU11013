@@ -16,6 +16,9 @@ class PieChart
   boolean open = false;
   //boolean close = false;
   boolean closed = false;
+  boolean destAirport = true;
+  String dateEnd = "20";
+  String dateStart = "22";
 
 
   PieChart (ArrayList<Integer> data, ArrayList<String> places, String airport)
@@ -80,8 +83,10 @@ class PieChart
     if (!closed)
     {
       fill(BLACK);
-      textSize(30);
-      text( "Number of flights to/from chosen airport", SCREENX/3, 50);
+      textSize(25);
+      textAlign(CENTER, TOP);
+      text( "Number of flights "+(destAirport?"to ":"from ") +airport+" from 01/"+dateStart+"/2022 - 01/"+dateEnd+"/2022", ARC_X, 50);
+      textAlign(LEFT, BOTTOM);
       float lastAngle = 0;
       for (int i = 0; i < angles.size(); i++)
       {
@@ -98,14 +103,14 @@ class PieChart
         fill(BLACK);
         tXpos = ARC_X + RADIUS*cos(tAngle)/1.7;
         tYpos = ARC_Y + RADIUS*sin(tAngle)/1.7;
-        textSize(100/angles.size()+2*RADIUS/90);
-        text(places.get(i), tXpos-5, tYpos+5);
+        textSize(6+5/angles.size()+2*RADIUS/90);
+        text(places.get(i), tXpos-6, tYpos+6);
 
         fill(WHITE);
         tXpos = ARC_X + RADIUS*cos(tAngle)/2.5;
         tYpos = ARC_Y + RADIUS*sin(tAngle)/2.5;
-        textSize(100/places.size()+RADIUS/60);
-        text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-18, tYpos+3);
+        textSize(6+5/places.size()+RADIUS/60);
+        text(Math.ceil((double)(angles.get(i))*1000/360)/10+"%", tXpos-16, tYpos+5);
         lastAngle += radians(angles.get(i));
       }
     }
