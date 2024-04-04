@@ -20,7 +20,9 @@ void setup() {
     }
     dataPoints.add(new DataPoint(fields)); 
   }
-  String FromWhatAirport = "IL";
+  String FromWhatAirport = "NY";
+  
+  
   flights = new FlightsPerState(dataPoints,FromWhatAirport);
   states = new ArrayList<StateShape>();
   states.add(new StateShape("AL", loadShape("AL.obj"), xoffset + 8.6, yoffset + 5.6));  states.add(new StateShape("AK", loadShape("AK.obj"), xoffset + 1.7, yoffset + 6.8));
@@ -50,6 +52,8 @@ void setup() {
   states.add(new StateShape("VA", loadShape("VA.obj"), xoffset + 10.05, yoffset + 3.83));  states.add(new StateShape("WA", loadShape("WA.obj"), xoffset + 1.43, yoffset + 0.58));
   states.add(new StateShape("WV", loadShape("WV.obj"), xoffset + 9.8, yoffset + 3.63));  states.add(new StateShape("WI", loadShape("WI.obj"), xoffset + 7.63, yoffset + 2.2));
   states.add(new StateShape("WY", loadShape("WY.obj"), xoffset + 3.83, yoffset + 2.39));
+  
+  
   heatmap = new HeatMap(flights,states);
   stateCubes = new ArrayList<StateShapeForCubes>();
   stateCubes.add(new StateShapeForCubes("AL", loadShape("AL.obj"), xoffset + 8.6, yoffset + 5.6));
@@ -100,36 +104,55 @@ void draw() {
       angleY += (initialAngleY - angleY) * 0.1;
     }
   }
+  //textSize(100);
+  //for (StateShape state : states) {
+  //  float mouseXTransformed = (mouseX - width / 2) / 100.0;
+  //  float mouseYTransformed = (mouseY - height / 2) / 100.0;
+  //  if(isMouseOverState(mouseXTransformed, mouseYTransformed, state)){
+  //        pushMatrix();
+  //        translate(-900,-150,0.5);
+  //        fill(0);
+  //        text(state.name,0,0);
+  //        int number;
+  //        int index = flights.airportNames.indexOf(state.name);
+  //        if(index != -1)
+  //          number = flights.numberOfFlights.get(index);
+  //        else 
+  //          number = 0; 
+  //        text(number,150,0);
+  //        popMatrix();
+  //      }
+  //}
   scale(100);
-   for (StateShape state : states) {
-        float mouseXTransformed = (mouseX - width / 2) / 100.0;
-        float mouseYTransformed = (mouseY - height / 2) / 100.0;
-        state.updateTargetZ(isMouseOverState(mouseXTransformed, mouseYTransformed, state));
-        state.updateZ();
-        state.display();
-    }
+   //for (StateShape state : states) {
+   //     float mouseXTransformed = (mouseX - width / 2) / 100.0;
+   //     float mouseYTransformed = (mouseY - height / 2) / 100.0;
+   //     state.updateTargetZ(isMouseOverState(mouseXTransformed, mouseYTransformed, state));
+   //     state.updateZ();
+   //     state.display();
+   // }
     rotateX(0.5);
     
-    //for(StateShapeForCubes state : stateCubes){
-    //  state.display();
-    //}
-    //for(StateShapeForCubes state : stateCubes){
-    //  stroke(255);
-    //  strokeWeight(0.01);
-    //  fill(255,165,0);
-    //int airportIndex = flights.airportNames.indexOf(state.name);
-    //float numberOfFlightsForState;
-    //if(airportIndex == -1){
-    //  numberOfFlightsForState = 0;}
-    //else {
-    //  numberOfFlightsForState = flights.numberOfFlights.get(airportIndex);}
-    //float height = (numberOfFlightsForState/maxFlights)*2;
-    //pushMatrix();
-    //translate(state.x, state.y, height/2); 
-    //if(height!=0)
-    //  box(0.15, 0.15, height); 
-    //  popMatrix();
-    //}
+    for(StateShapeForCubes state : stateCubes){
+      state.display();
+    }
+    for(StateShapeForCubes state : stateCubes){
+      stroke(255);
+      strokeWeight(0.01);
+      fill(255,165,0);
+    int airportIndex = flights.airportNames.indexOf(state.name);
+    float numberOfFlightsForState;
+    if(airportIndex == -1){
+      numberOfFlightsForState = 0;}
+    else {
+      numberOfFlightsForState = flights.numberOfFlights.get(airportIndex);}
+    float height = (numberOfFlightsForState/maxFlights)*2;
+    pushMatrix();
+    translate(state.x, state.y, height/2); 
+    if(height!=0)
+      box(0.15, 0.15, height); 
+      popMatrix();
+    }
    lastMouseX = mouseX;
    lastMouseY = mouseY;
 }

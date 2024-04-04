@@ -4,6 +4,7 @@ class StateShape {
   String name;
   float z = 0; 
   float targetZ = 0;
+  boolean showText = false;
   StateShape(String name, PShape shape, float x, float y) {
     this.name = name;
     this.shape = shape;
@@ -34,6 +35,7 @@ void updateZ() {
 }
   void display() {
         pushMatrix();
+
         translate(x, y, z);
         shape(shape);
         popMatrix();
