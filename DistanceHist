@@ -1,0 +1,102 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+
+Table table;
+HashMap<String, Integer> cityCountMap = new HashMap<String, Integer>();
+HashMap<String, Integer> cityDistanceMap = new HashMap<String, Integer>();
+ArrayList<String> cities = new ArrayList<String>();
+ArrayList<Integer> distances = new ArrayList<Integer>();
+int hoverIndex = -1;
+
+void setup() {
+  size(1500, 1000); 
+  table = loadTable("flights_full.csv", "header");
+  println("total " + table.getRowCount() + " rows");
+
+  for (TableRow row : table.rows()) {
+    String city = row.getString(5); 
+    int distance = row.getInt(17); 
+
+    if (cityCountMap.containsKey(city)) {
+      int count = cityCountMap.get(city);
+      cityCountMap.put(city, count + 1);
+    } else {
+      cityCountMap.put(city, 1);
+    }
+
+    if (cityDistanceMap.containsKey(city)) {
+      int totalDistance = cityDistanceMap.get(city);
+      cityDistanceMap.put(city, totalDistance + distance);
+    } else {
+      cityDistanceMap.put(city, distance);
+    }
+  }
+
+  for (Map.Entry<String, Integer> entry : cityCountMap.entrySet()) {
+    String city = entry.getKey();
+    int count = entry.getValue();
+    int distance = cityDistanceMap.get(city);
+    cities.add(city);
+    distances.add(distance);
+  }
+}
+
+void draw() {
+  background(0, 0, 50); 
+  
+  // Draw Title
+  textAlign(CENTER, CENTER);
+  textSize(40);
+  fill(255); // White color for title
+  text("Distances Histogram", width/2, 50);
+  
+  // Draw Bars
+  int margin = 100; 
+  int graphWidth = width - 2 * margin;
+  int graphHeight = height - 2 * margin;
+  int barWidth = graphWidth / cities.size();
+  int maxDistance = Integer.MIN_VALUE;
+  for (Integer distance : distances) {
+    if (distance > maxDistance) {
+      maxDistance = distance;
+    }
+  }
+
+  for (int i = 0; i < cities.size(); i++) {
+    int x = margin + i * barWidth;
+    int y = margin + graphHeight - (int)map(distances.get(i), 0, maxDistance, 0, graphHeight);
+    
+  
+    fill(255, 165, 0); // Orange color
+    
+    rect(x, y, barWidth, graphHeight - (y - margin));
+    textAlign(CENTER, CENTER);
+    fill(255); 
+    textSize(16); 
+    text(distances.get(i) + " miles", x + barWidth / 2, y - 20); 
+  }
+  
+  hoverIndex = -1;
+  for (int i = 0; i < cities.size(); i++) {
+    int x = margin + i * barWidth;
+    int y = margin + graphHeight - (int)map(distances.get(i), 0, maxDistance, 0, graphHeight);
+    if (mouseX >= x && mouseX <= x + barWidth && mouseY >= y && mouseY <= height - margin) {
+      hoverIndex = i;
+      break; 
+    }
+  }
+
+  if (hoverIndex != -1) {
+    float tooltipWidth = textWidth("Distance: " + distances.get(hoverIndex) + " miles") + 20; 
+    int tooltipHeight = 50; 
+    float tooltipX = width - tooltipWidth - 20; 
+    int tooltipY = 20;
+    fill(255);
+    rect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textSize(18); 
+    text("Distance: " + distances.get(hoverIndex) + " miles\nCity: " + cities.get(hoverIndex), tooltipX + tooltipWidth / 2, tooltipY + tooltipHeight / 2);
+  }
+}
