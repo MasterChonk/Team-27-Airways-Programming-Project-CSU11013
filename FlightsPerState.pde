@@ -1,3 +1,5 @@
+// Junyi Xia 
+// Class for creating the Arraylists of flights per state
 class FlightsPerState {
   //ArrayList<DataPoint> flights;
   ArrayList<String> airportNames;
