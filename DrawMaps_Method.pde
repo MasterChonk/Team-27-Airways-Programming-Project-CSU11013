@@ -1,3 +1,5 @@
+// Junyi Xia
+// Method for drawing both maps
 void DrawMaps() {
   lights();
   translate(width/2, height/2);
@@ -20,10 +22,7 @@ void DrawMaps() {
   lastMouseY = mouseY;
 }
 
-//void mousePressed() {
-//  dragging = true;
-//}
-
+// Method for when mouse if released on both maps so that they reset 
 void mouseReleased() {
   dragging = false;
 }
