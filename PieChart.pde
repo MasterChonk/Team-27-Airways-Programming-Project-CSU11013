@@ -75,7 +75,7 @@ class PieChart
       textSize(30);
       textAlign(CENTER, CENTER);
       fill(BLACK);
-      text("Percentage of "+(lateness?"Delayed ":"On Time ")+"Flights " + (destAirport ? "to ":"from ") + stateLabel + ", " + airport: ( 01/" + ((startDate < 10) ? "0"+startDate : startDate) + "/2022 - 01/" + ((endDate < 10) ? "0"+endDate : endDate) + "/2022 )", width/2, topMargin - 150);
+      text("Percentage of "+(lateness?"Delayed ":"On Time ")+"Flights " + (destAirport ? "to ":"from ") + stateLabel + ", " + airport + ": ( 01/" + ((startDate < 10) ? "0"+startDate : startDate) + "/2022 - 01/" + ((endDate < 10) ? "0"+endDate : endDate) + "/2022 )", width/2, topMargin - 150);
 
       float lastAngle = 0;
       for (int i = 0; i < angles.size(); i++)
