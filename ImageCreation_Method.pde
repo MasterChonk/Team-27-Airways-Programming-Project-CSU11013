@@ -1,3 +1,5 @@
+// Jakub Kieblesz
+// Method for creating all Images for Home Screen and Data Screen 
 void ImageCreation(PImage logo27Airways, PImage experience27Airways, PImage calendarIcon, PImage airportIcon, PImage USAflag, PImage Irelandflag, PImage doubleArrow, PImage plane27Airways) {
   // Home Screen Images
   Image logo = new Image(30, 30, logo27Airways, false);
