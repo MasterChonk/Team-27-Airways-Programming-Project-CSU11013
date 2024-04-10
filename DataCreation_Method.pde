@@ -1,4 +1,7 @@
  void DataCreation() { 
+  // Added by Kush Voorakkara
+  // This code is creates a hashmap with the different airport names and their frequencies in the selected data
+  // and then splits it into two arraylist to be used
   HashMap <String, Integer> counts = findFrequency(fullData.findData(destAirport, lateness, false, startDate, endDate, airportCode));
   ArrayList <String> categories = new ArrayList <String> (Arrays.asList(counts.keySet().toArray(new String[0])));
   ArrayList <Integer> frequencies = new ArrayList <Integer> (Arrays.asList(counts.values().toArray(new Integer[0])));
@@ -6,7 +9,10 @@
   HashMap <String, Integer> counts1 = findFrequency(fullData.findData(destAirport, lateness, true, startDate, endDate, airportState));
   ArrayList <String> categories1 = new ArrayList <String> (Arrays.asList(counts1.keySet().toArray(new String[0])));
   ArrayList <Integer> frequencies1 = new ArrayList <Integer> (Arrays.asList(counts1.values().toArray(new Integer[0])));
-  
+
+
+  // This gets a hashmap of the states and the total distance traveled to or from the state as a hashmap
+  // this is then split into two arraylists that can then be used alse where
   HashMap <String, Integer> counts2 = fullData.findData(lateness, destAirport, startDate, endDate, airportState, "DISTANCE");
   ArrayList <String> categories2 = new ArrayList <String> (Arrays.asList(counts2.keySet().toArray(new String[0])));
   ArrayList <Integer> frequencies2 = new ArrayList <Integer> (Arrays.asList(counts2.values().toArray(new Integer[0])));
