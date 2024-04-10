@@ -1,3 +1,5 @@
+// Jakub Kieblesz
+// Overall draw function for entire project
 void draw() {
   // Initialised Screens
   Screen theScreen = (Screen) screenList.get(currentScreen);
