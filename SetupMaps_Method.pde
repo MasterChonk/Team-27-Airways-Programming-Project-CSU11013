@@ -1,3 +1,5 @@
+// Junyi Xia 
+// Method for setting up both maps in Data Screen
 void SetupMaps() {
   states = new ArrayList<StateShape>();
   states.add(new StateShape("AL", loadShape("AL.obj"), xoffset + 8.6, yoffset + 5.6));  states.add(new StateShape("AK", loadShape("AK.obj"), xoffset + 1.7, yoffset + 6.8));
