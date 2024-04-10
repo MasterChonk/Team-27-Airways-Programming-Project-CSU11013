@@ -35,7 +35,7 @@ class Histogram {
     textSize(30);
     textAlign(CENTER, CENTER);
     fill(BLACK);
-    text("Frequency of "+(lateness?"Delayed ":"On Time ")+"Flights " + (destAirport ? "to ":"from ") + stateLabel + ": ( 01/" + ((startDate < 10) ? "0"+startDate : startDate) + "/2022 - 01/" + ((endDate < 10) ? "0"+endDate : endDate) + "/2022 )", width/2, topMargin - 95);
+    text("Frequency of "+(lateness?"Delayed ":"On Time ")+"Flights " + (destAirport ? "to ":"from ") + stateLabel + ", " airportCode + ": ( 01/" + ((startDate < 10) ? "0"+startDate : startDate) + "/2022 - 01/" + ((endDate < 10) ? "0"+endDate : endDate) + "/2022 )", width/2, topMargin - 95);
 
     // x-axis
     stroke(0);
