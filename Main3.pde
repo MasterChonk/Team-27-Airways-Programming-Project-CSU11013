@@ -228,7 +228,7 @@ void setup() {
   factFont = selectorFont;
 
   // Tables are assigned to the Data
-  fullData = new DataTable("flights full month.csv");
+  fullData = new DataTable("flights_full.csv");
   allAirports = loadTable("All Airports.csv", "header");
 
   // Check if CSV file for all Airports is created
