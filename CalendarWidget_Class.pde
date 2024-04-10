@@ -1,10 +1,13 @@
+// Jakub Kieblesz
+// Class for creating all the Calendar Widgets 
 class CalendarWidget {
   int x, y, width, height, dateNumber;
   String label; 
   color widgetColor, hoverColor, selectedColor, labelColor, baseLabelColor, selectedLabelColor;
   PFont widgetFont, baseFont, selectedFont;
   boolean startDate, endDate, transparent;
-  
+
+  // Constructor for Calendar Widgets
   CalendarWidget(int x, int y, int width, int dateNumber, String label, color hoverColor, color selectedColor, color baseLabelColor, color selectedLabelColor,
         PFont baseFont, PFont selectedFont, boolean startDate, boolean endDate, boolean transparent) {
     this.x = x; this.y = y; this.width = width; this.dateNumber = dateNumber;
@@ -13,6 +16,7 @@ class CalendarWidget {
     this.baseFont = baseFont; this.selectedFont = selectedFont;
     this.startDate = startDate; this.endDate = endDate; this.transparent = transparent;
   }
+  // Method for detecting mouse hover
   void mouseMoved() {
     if (dist(mouseX, mouseY, x, y) <= width/2) {
       typeCursor = HAND;
@@ -35,6 +39,7 @@ class CalendarWidget {
       }
     }
   }
+  // Drawing the Calendar Widgets
   void draw() {
     if (transparent == true) {
       noFill();
@@ -49,6 +54,7 @@ class CalendarWidget {
     textFont(widgetFont);
     text(label, x, y);
   }
+  // Method for detecting Mouse Pressed on specific Calendar Widget
   boolean getEvent(int mX, int mY) {
     if (dist(mX, mY, x, y) <= width/2) {
       return BUTTON_PRESSED;
